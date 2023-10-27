@@ -8,6 +8,7 @@
 , gnugrep
 , coreutils
 , networkmanager
+, bash
 }:
 
 buildNpmPackage rec {
@@ -23,9 +24,14 @@ buildNpmPackage rec {
 
   dontNpmBuild = true;
 
+  buildInputs = [
+    bash
+  ];
+
   nativeBuildInputs = [ makeWrapper ];
 
   postInstall = ''
+    patchShebangs script.sh
     install -D script.sh $out/bin/pup-script
     wrapProgram $out/bin/pup \
       --set PUPPETEER_EXECUTABLE_PATH ${chromium}/bin/chromium
