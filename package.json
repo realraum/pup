@@ -1,0 +1,14 @@
+{
+  "name": "pup",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@puppeteer/replay": "^2.13.4",
+    "puppeteer": "^21.4.1"
+  },
+  "type": "module",
+  "bin": {
+    "pup": "./bin.js"
+  }
+}
