@@ -34,6 +34,22 @@ export async function getSettingsValues(host: string, page: string) {
   if (!pageId) throw new Error('Could not find pageId')
   const id = pageId[1]
 
+  /*
+  The response we get looks like this:
+  function GetV(){
+    var d=document;
+
+    // direct assign
+    d.$VAR = $VALUE;
+    // form assign
+    d.Sf.$VAR.value/checked = $VALUE;
+    // Class name assign
+    d.getElementsByClassName("$VAR")[$X].innerHTML = $VALUE;
+    //
+
+   */
+
+
   return await fetchAPI(host, id)
 }
 
