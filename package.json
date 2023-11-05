@@ -3,12 +3,34 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node --loader @esbuild-kit/esm-loader src/bin.ts",
+    "dev": "nodemon -x node --loader @esbuild-kit/esm-loader src/bin.ts | pino-pretty",
+    "build": "tsc"
+  },
   "dependencies": {
+    "@esbuild-kit/esm-loader": "^2.6.5",
+    "@hapi/boom": "^10.0.1",
+    "@hapi/hapi": "^21.3.2",
+    "@hapi/inert": "^7.1.0",
+    "@hapi/vision": "^7.0.3",
     "@puppeteer/replay": "^2.13.4",
-    "puppeteer": "^21.4.1"
+    "hapi-pino": "^12.1.0",
+    "hapi-sentry": "^4.0.0",
+    "hapi-swagger": "^17.2.0",
+    "joi": "^17.11.0",
+    "puppeteer": "^21.4.1",
+    "relish2": "^3.0.2",
+    "swagger2openapi": "^7.0.8",
+    "typescript": "^5.2.2"
   },
   "type": "module",
   "bin": {
-    "pup": "./bin.js"
+    "pup": "lib/bin.js"
+  },
+  "devDependencies": {
+    "@types/swagger2openapi": "^7.0.3",
+    "nodemon": "^3.0.1",
+    "pino-pretty": "^10.2.3"
   }
 }

@@ -31,12 +31,8 @@ buildNpmPackage rec {
   nativeBuildInputs = [ makeWrapper ];
 
   postInstall = ''
-    patchShebangs script.sh
-    install -D script.sh $out/bin/pup-script
     wrapProgram $out/bin/pup \
       --set PUPPETEER_EXECUTABLE_PATH ${chromium}/bin/chromium
-    wrapProgram $out/bin/pup-script \
-      --prefix PATH : $out/bin:${lib.makeBinPath [ curl jq gnugrep coreutils networkmanager ]}
   '';
 }
 
