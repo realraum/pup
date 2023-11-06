@@ -41,8 +41,10 @@ function processProperty (property: any) {
 export default async function swagger2openapi (obj: any): Promise<any> {
   const converted = await converter.convertObj(obj, {})
 
+  // @ts-expect-error
   for (const schema of Object.values(converted.openapi.components.schemas)) {
     processProperty(schema)
+    // @ts-expect-error
     for (const property of Object.values(schema.properties || {})) {
       processProperty(property)
     }

@@ -1,38 +1,31 @@
 { lib
-, buildNpmPackage
+, mkPnpmPackage
 , fetchFromGitHub
 , makeWrapper
 , chromium
-, curl
-, jq
-, gnugrep
-, coreutils
-, networkmanager
-, bash
+, nodejs
 }:
 
-buildNpmPackage rec {
+mkPnpmPackage rec {
   name = "pup";
 
   src = ./.;
 
-  npmDepsHash = "sha256-o4bEK2trWHkuw0/BDwIT5C5zXxIJd0aHafQDu/1MZQg=";
+  distDir = ".gitignore";
 
-  env = {
-    PUPPETEER_SKIP_DOWNLOAD = true;
-  };
-
-  dontNpmBuild = true;
-
-  buildInputs = [
-    bash
+  nativeBuildInputs = [
+    makeWrapper
+    nodejs.pkgs.pnpm
   ];
 
-  nativeBuildInputs = [ makeWrapper ];
+  PUPPETEER_SKIP_DOWNLOAD = true;
 
   postInstall = ''
-    wrapProgram $out/bin/pup \
+    rm -rf $out
+    cp -r $PWD $out
+    ls $out
+    chmod +x $out/lib/src/bin.js
+    makeWrapper $out/lib/src/bin.js $out/bin/pup \
       --set PUPPETEER_EXECUTABLE_PATH ${chromium}/bin/chromium
   '';
 }
-

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import Webserver from './webserver'
+import Webserver from './webserver.js'
 
 const webserver = await Webserver({
   hapi: {

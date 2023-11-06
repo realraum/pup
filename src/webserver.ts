@@ -1,8 +1,8 @@
 import Hapi from '@hapi/hapi'
 
-import converter from './swagger2openapi'
+import converter from './swagger2openapi.js'
 
-import API from './api'
+import API from './api.js'
 
 async function require(thing: string) {
   const imported = await import(thing) // "dynamic import"

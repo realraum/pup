@@ -1,5 +1,5 @@
 import {Server} from '@hapi/hapi'
-import {getSettingsValues, setSettingsValue, verifySettingsPage} from "./api-caller";
+import {getSettingsValues, setSettingsValue, verifySettingsPage} from "./api-caller.js";
 import Joi from "joi";
 
 export default async function API(server: Server) {

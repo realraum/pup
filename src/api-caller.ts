@@ -1,4 +1,4 @@
-import {fetchAPI, pupeteerAPI} from "./client"
+import {fetchAPI, pupeteerAPI} from "./client.js"
 import {AssertedEventType, StepType} from "@puppeteer/replay";
 import Boom from "@hapi/boom";
 
