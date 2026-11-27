@@ -13,9 +13,9 @@ export default async function API(server: Server) {
     method: 'GET',
     path: `/api/{host}/settings/{page}`,
     handler: async (request, h) => {
-      await verifySettingsPage(request.params.host, request.params.page)
+      await verifySettingsPage(request.params.host as string, request.params.page as string)
 
-      return getSettingsValues(request.params.host, request.params.page)
+      return getSettingsValues(request.params.host as string, request.params.page as string)
     },
     options: {
       validate: {
@@ -28,9 +28,9 @@ export default async function API(server: Server) {
     method: 'GET',
     path: '/api/{host}/settings/{page}/set/{key}/{value}',
     handler: async (request, h) => {
-      await verifySettingsPage(request.params.host, request.params.page)
+      await verifySettingsPage(request.params.host as string, request.params.page as string)
 
-      await setSettingsValue(request.params.host, request.params.page, request.params.key, request.params.value)
+      await setSettingsValue(request.params.host as string, request.params.page as string, request.params.key as string, request.params.value as string)
 
       return {
         ok: true
