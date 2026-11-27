@@ -18,7 +18,7 @@
     "hapi-pino": "^12.1.0",
     "hapi-sentry": "^4.0.0",
     "hapi-swagger": "^17.2.0",
-    "joi": "^17.11.0",
+    "joi": "^17.13.9",
     "puppeteer": "^21.5.1",
     "relish2": "^3.0.2",
     "swagger2openapi": "^7.0.8",
